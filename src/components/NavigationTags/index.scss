@@ -1,0 +1,29 @@
+.navigation-tags-wrapper {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.tag-button {
+  cursor: pointer;
+  border-radius: 6%;
+  padding: 8px;
+  text-decoration: none;
+  margin-right: 10;
+  margin-top: 10;
+  padding: "12px 25px";
+  transition: color 0.2s ease-in-out;
+}
+
+.tag-button:hover {
+  color: var(--hover-color);
+  text-decoration: underline;
+}
+
+.selected {
+  color: var(--primary-color);
+  background-color: var(--hover-color);
+}
+
+.selected:hover {
+  color: var(--primary-color);
+}
