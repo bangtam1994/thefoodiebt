@@ -12,24 +12,41 @@ interface Props {
   siteTitle: string;
 }
 const HeaderSmall = ({ siteTitle }: Props) => (
-  <div className="header-small-container">
-    <Link
-      to="/"
-      style={{
-        textDecoration: `none`,
-      }}
-    >
-      <div className="header-title-small">{siteTitle}</div>
-    </Link>
+  <div className="header-small-wrapper">
+    <div className="header-small-container">
+      <div className="flex1">
+        <i
+          className="gg-menu"
+          style={{ cursor: "pointer", justifyContent: "flex-start" }}
+        />
+      </div>
 
-    <div className="header-small-socials">
-      <span style={{ display: "flex", justifyContent: "space-between" }}>
-        <Instagram />
-        <Facebook />
-        <Linkedin />
-      </span>
+      <Link
+        to="/"
+        style={{
+          textDecoration: `none`,
+        }}
+      >
+        <div className="header-title-small">{siteTitle}</div>
+      </Link>
+      <div
+        className="flex1"
+        style={{
+          alignItems: "center",
+          justifyContent: "flex-end",
+        }}
+      >
+        <div className="header-small-socials">
+          <span style={{ display: "flex", justifyContent: "space-between" }}>
+            <Instagram />
+            <Facebook />
+            <Linkedin />
+          </span>
+        </div>
+        <ThemeChanger />
+      </div>
     </div>
-    <ThemeChanger />
+    <div className="site-small-header-separator" />
   </div>
 );
 

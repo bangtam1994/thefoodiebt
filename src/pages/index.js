@@ -5,7 +5,7 @@ import Layout from "../components/layout";
 import PostLink from "../components/post-link";
 import NavigationTags from "../components/NavigationTags/NavigationTags";
 
-const tagsList = ["Tous", "Street Food", "Coréen", "Burger"];
+const tagsList = ["streetfood", "koreanfood", "burger", "pasta"];
 
 const IndexPage = ({
   data: {
@@ -13,26 +13,32 @@ const IndexPage = ({
     allMarkdownRemark: { edges },
   },
 }) => {
-  const [tagSelected, setTagSelected] = useState([tagsList[0]]);
+  const [tagSelected, setTagSelected] = useState([]);
 
-  console.log(edges);
   const handleOnClick = (item) => {
     let copy = [...tagSelected];
-    console.log(item);
     if (copy.find((el) => el === item)) {
       copy = copy.filter((el) => el !== item);
     } else {
       copy.push(item);
     }
-    console.log(copy);
     setTagSelected(copy);
   };
 
-  const Posts = edges
-    .filter((edge) => edge.node.frontmatter.tags.indexOf(tagSelected) !== -1)
-    .map((edge) => <PostLink key={edge.node.id} post={edge.node} />);
-  // edge.node.frontmatter.tags.indexOf(tagSelected) !== -1)
-  // You can filter your posts based on some criteria
+  let Posts;
+
+  if (tagSelected.length === 0) {
+    Posts = edges
+      .filter((edge) => !!edge.node.frontmatter.date)
+      .map((edge) => <PostLink key={edge.node.id} post={edge.node} />);
+  } else {
+    Posts = edges
+      .filter((edge) => {
+        let tagsFromPost = edge.node.frontmatter.tags;
+        return tagSelected.every((tag) => tagsFromPost.includes(tag));
+      })
+      .map((edge) => <PostLink key={edge.node.id} post={edge.node} />);
+  }
 
   return (
     <Layout isLandingPage={true}>

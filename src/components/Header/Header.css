@@ -54,23 +54,43 @@
 
 /* SMALL HEADER */
 
+.header-small-wrapper {
+  display: "flex";
+  flex-direction: "column";
+  align-items: "center";
+  margin-bottom: 32px;
+}
+
 .header-small-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  background-color: var(--background-second);
+  /* background-color: var(--background-second); */
   height: 60px;
   width: 100%;
 }
 
 .header-title-small {
   color: var(--primary-color);
-  font-family: "Abril Fatface";
+  font-family: "ChunkFive-Regular";
   font-size: 25px;
-  font-weight: bold;
+  flex: 1;
+  display: "flex";
+  justify-content: "center";
 }
 
 .header-small-socials {
   right: 50px;
   width: 90px;
+}
+
+.flex1 {
+  display: flex;
+  flex: 1;
+}
+
+.site-small-header-separator {
+  width: 100%;
+  background-color: var(--primary-color);
+  height: 2px;
 }

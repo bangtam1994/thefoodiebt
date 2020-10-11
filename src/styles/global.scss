@@ -35,8 +35,8 @@ body.light {
   --card-bdr: #eee;
   --card-shadow: #d5d5d5;
   --btn-bg: var(--background);
-  --btn-bdr: #d3d6e7;
-  --btn-text-color: #868892;
+  --btn-bdr: rgba(255, 145, 118, 0.9);
+  --btn-text-color: #000000;
   --btn-hover-bg: var(--btn-bdr);
   --btn-hover-text-color: #00062b;
   --contact-bg: #f7f8fe;
@@ -55,11 +55,11 @@ body.dark {
   --text-color: rgba(255, 255, 255, 0.88);
   --text-secondary-color: rgba(255, 255, 255, 0.66);
   --site-header: var(--background);
-  --card-bg: #181326;
-  --card-bdr: #181326;
+  --card-bg: #000000;
+  --card-bdr: #000000;
   --card-shadow: #020204;
   --btn-bg: var(--background);
-  --btn-bdr: #d3d6e7;
+  --btn-bdr: rgba(255, 145, 118, 0.9);
   --btn-text-color: #868892;
   --btn-hover-bg: var(--btn-bdr);
   --btn-hover-text-color: #00062b;
@@ -119,18 +119,19 @@ a {
   border: 1px solid var(--btn-bdr);
   border-radius: 9px;
   text-decoration: none;
+  cursor: pointer;
   color: var(--btn-text-color);
   font-size: 16px;
-  font-weight: 400;
   margin: 0 20px 0 0;
+  font-family: "Futura PT";
   transition: background-color 0.3s linear;
   &.-primary {
-    background-color: var(--primary-color);
+    background-color: var(--btn-bg);
     border-color: var(--primary-color);
-    color: var(--primary-text-color);
+    color: var(--btn-text-color);
     &:hover {
-      background-color: var(--secondary-color);
-      color: var(--primary-text-color);
+      background-color: var(--btn-hover-bg);
+      color: var(--btn-hover-text-color);
       text-decoration: none;
     }
   }
@@ -213,7 +214,7 @@ a {
 .card {
   display: grid;
   background-color: var(--card-bg);
-  border-radius: 9px;
+  // border-radius: 9px;
   border: 1px solid var(--card-bdr);
   box-shadow: 0 0 30px var(--card-shadow);
   overflow: hidden;
@@ -256,16 +257,14 @@ a {
   }
 }
 .form-container {
-  background-color: var(--contact-bg);
-  padding: 32px;
-  border: 1px solid var(--contact-bdr);
-  border-radius: 9px;
+  padding: 12px;
   label {
     display: block;
-    margin-bottom: 0.5rem;
-    color: var(--text-secondary-color);
+    margin-bottom: 10px;
+    color: var(--primary-color);
   }
   input[type="text"],
+  input[type="textarea"],
   input[type="email"],
   textarea {
     appearance: none;
@@ -274,22 +273,30 @@ a {
     border-radius: 6px;
     line-height: 32px;
     padding: 6px 12px;
-    width: calc(100% - 24px);
-    margin-bottom: 1.5rem;
-    background-color: var(--input-bg);
     font-family: "Futura PT";
+    width: calc(100% - 24px);
+    margin-bottom: 18px;
   }
   textarea {
-    margin-bottom: 2rem;
+    margin-bottom: 18px;
     height: 150px;
   }
+  input:focus {
+    outline: none;
+  }
+}
+
+.contact-error {
+  color: var(--hover-color);
+  margin: 0px 0px 18px 0px;
+  font-size: 11px;
 }
 .two-grids {
   display: grid;
   grid-gap: 32px;
   &.-contact {
     .post-thumbnail {
-      min-height: 240px !important;
+      min-height: 200px !important;
     }
   }
 }

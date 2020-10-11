@@ -1,6 +1,18 @@
 .navigation-tags-wrapper {
-  width: 60%;
-  margin: 0 auto;
+  width: 100%;
+  // margin: 0 auto;
+  background-color: var(--background);
+  position: sticky;
+  height: 70px;
+  top: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 3px solid var(--primary-color);
+}
+
+.list {
+  font-size: 1.2rem;
 }
 
 .tag-button {
