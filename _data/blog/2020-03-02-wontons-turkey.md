@@ -4,7 +4,7 @@ path: /wonton_turkey
 date: 2020-10-01T06:15:50.738Z
 title: Les Wontons au mapo sauce !
 subtitle: Olala
-thumbnail: /assets/wontons_turkey.jpg
+thumbnail: /assets/wontons_turkey.jpeg
 metaDescription: wontons_turkey
 tags: ["asian"]
 ---
