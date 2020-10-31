@@ -27,7 +27,7 @@ body.light {
   --featured-bg: #493b8a;
   --featured-text: #fff;
   --secondary-color: #10072b;
-  --hover-color: rgba(255, 145, 118, 0.9);
+  --hover-color: #ff9176e6;
   --background: #fff;
   --background-second: #fafafa;
   --site-header: var(--background);
@@ -50,14 +50,14 @@ body.dark {
   --featured-bg: #66578d;
   --featured-text: #fff;
   --secondary-color: #2e2e2e;
-  --background: #000000;
+  --background: #121212;
   --background-second: #181818;
   --text-color: rgba(255, 255, 255, 0.88);
   --text-secondary-color: rgba(255, 255, 255, 0.66);
   --site-header: var(--background);
   --card-bg: #000000;
   --card-bdr: #000000;
-  --card-shadow: #020204;
+  --card-shadow: #06060c;
   --btn-bg: var(--background);
   --btn-bdr: rgba(255, 145, 118, 0.9);
   --btn-text-color: #868892;
@@ -122,7 +122,6 @@ a {
   cursor: pointer;
   color: var(--btn-text-color);
   font-size: 16px;
-  margin: 0 20px 0 0;
   font-family: "Futura PT";
   transition: background-color 0.3s linear;
   &.-primary {
@@ -208,54 +207,10 @@ a {
 .grids {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 32px;
+  grid-gap: 15px;
   margin-top: 32px;
 }
-.card {
-  display: grid;
-  background-color: var(--card-bg);
-  // border-radius: 9px;
-  border: 1px solid var(--card-bdr);
-  box-shadow: 0 0 30px var(--card-shadow);
-  overflow: hidden;
-  line-height: 1.5;
-  &:hover .post-link {
-    color: var(--primary-color);
-  }
-  > a img {
-    display: block;
-  }
-  > header {
-    padding: 24px;
-  }
-  > h2:first-child {
-    margin: 0 0 0.5rem 0;
-  }
-  .post-title {
-    font-size: 1.2rem;
-    margin-bottom: 0.3rem;
-  }
-  .post-meta {
-    font-weight: 100;
-    margin-bottom: 0;
-  }
-  .post-link {
-    color: var(--text-color);
-    text-decoration: none;
-  }
-}
-.post-meta {
-  font-size: 0.8rem;
-  color: var(--text-secondary-color);
-}
-.site-footer {
-  text-align: center;
-  margin: 90px 0 16px;
-  color: #666;
-  a {
-    font-weight: 700;
-  }
-}
+
 .form-container {
   padding: 12px;
   label {
@@ -336,6 +291,16 @@ body.light {
   height: 24px;
   margin-left: 20px;
 }
+
+// Photo de BT
+.bt-pic {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  object-position: 10%;
+  border-radius: 50%;
+}
+
 // CSS.gg icons for sun and moon
 .gg-sun {
   box-sizing: border-box;

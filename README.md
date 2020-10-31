@@ -1,6 +1,6 @@
 # The foodie BT - a food blog
 
-This simple website built with GatsbyJS and Netlify CMS. Deploys on netlify with single click.
+This website was built with GatsbyJS and Netlify CMS. Deploys on netlify with single click.
 This Starter is sponsered by [W3Layouts](https://w3layouts.com).
 
 ## Features
@@ -8,7 +8,6 @@ This Starter is sponsered by [W3Layouts](https://w3layouts.com).
 - Built with GatsbyJS and Netlify CMS
 - Option to Add, Edit, Update and Delete posts via Netlify CMS
 - SEO friendly - Option to Add meta description
-- In-built contact form powered by [W3Layouts](https://w3layouts.com)
 - Comes with dark mode
 
 ---

@@ -3,9 +3,10 @@ template: BlogPost
 path: /restaurant/deux-fois-plus-de-piment
 date: 2020-10-11T06:15:50.738Z
 title: Deux fois plus, le sichuan dans ton assiette
+subtitle: Sichuan
 thumbnail: /assets/2xplus.jpeg
 metaDescription: deux-fois-plus-de-piments
-tags: ["streetfood", "koreanfood"]
+tags: ["streetfood", "asian"]
 ---
 
 Je n’ai jamais eu un goût particulier pour les plats vraiment épicés.

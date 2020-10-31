@@ -1,0 +1,11 @@
+.primary {
+  cursor: pointer;
+  border-radius: 5%;
+  text-align: center;
+  text-overflow: ellipsis;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px;
+  transition-property: all;
+  transition-duration: 0.3s;
+  outline-style: none;
+  transition-timing-function: ease-in-out;
+}

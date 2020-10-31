@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import PostLink from "../components/post-link";
+import Card from "../components/Card/Card";
 import NavigationTags from "../components/NavigationTags/NavigationTags";
 
-const tagsList = ["streetfood", "koreanfood", "burger", "pasta"];
+const tagsList = ["streetfood", "asian", "burger", "pasta", "pastries", "boba"];
 
 const IndexPage = ({
   data: {
@@ -30,15 +30,16 @@ const IndexPage = ({
   if (tagSelected.length === 0) {
     Posts = edges
       .filter((edge) => !!edge.node.frontmatter.date)
-      .map((edge) => <PostLink key={edge.node.id} post={edge.node} />);
+      .map((edge) => <Card key={edge.node.id} post={edge.node} />);
   } else {
     Posts = edges
       .filter((edge) => {
         let tagsFromPost = edge.node.frontmatter.tags;
         return tagSelected.every((tag) => tagsFromPost.includes(tag));
       })
-      .map((edge) => <PostLink key={edge.node.id} post={edge.node} />);
+      .map((edge) => <Card key={edge.node.id} post={edge.node} />);
   }
+  console.log(Posts);
 
   return (
     <Layout isLandingPage={true}>
@@ -53,7 +54,20 @@ const IndexPage = ({
         tagSelected={tagSelected}
       />
 
-      <div className="grids">{Posts}</div>
+      {Posts.length > 0 ? (
+        <div className="grids">{Posts}</div>
+      ) : (
+        <div
+          style={{
+            height: 300,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          Désolé, la recherche n'a donné aucun résultat !
+        </div>
+      )}
     </Layout>
   );
 };
@@ -76,6 +90,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             path
             title
+            subtitle
             thumbnail
             tags
           }

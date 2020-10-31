@@ -1,9 +1,11 @@
 import React from "react";
 import Helmet from "react-helmet";
-import { graphql } from "gatsby";
+import { graphql, navigate } from "gatsby";
 import Layout from "../components/layout";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import FormErrorMessage from "../components/Form/FormErrorMessage";
 import * as Yup from "yup";
+import axios from "axios";
 
 // Yup validation
 const ValidationSchema = Yup.object().shape({
@@ -20,13 +22,15 @@ const ValidationSchema = Yup.object().shape({
 });
 
 const ContactPage = ({ data: { site } }) => {
+  const [formError, setFormError] = React.useState(false);
+  const [formSuccess, setFormSuccess] = React.useState(false);
   const initialValues = {
     name: "",
     email: "",
     topic: "",
     message: "",
   };
-
+  console.log(formError);
   return (
     <Layout>
       <Helmet>
@@ -40,7 +44,7 @@ const ContactPage = ({ data: { site } }) => {
         <div
           className="post-thumbnail"
           style={{
-            backgroundImage: `url('/assets/alexander-andrews-HgUDpaGPTEA-unsplash.jpg')`,
+            backgroundImage: `url('https://comco.computer/wp-content/uploads/2016/05/Contact-Background.jpg')`,
             marginBottom: 0,
           }}
         >
@@ -54,20 +58,36 @@ const ContactPage = ({ data: { site } }) => {
               ...initialValues,
             }}
             validationSchema={ValidationSchema}
-            onSubmit={(values, { setSubmitting, resetForm }) => {
-              const questions = {
+            onSubmit={async (values, { setSubmitting, resetForm }) => {
+              setFormError(false);
+
+              const formData = {
                 name: values.name,
                 topic: values.topic,
                 email: values.email,
                 message: values.message,
               };
-              alert(JSON.stringify(questions, null, 2));
-              setSubmitting(false);
-              resetForm();
+
+              console.log(formData);
+              try {
+                const response = await axios.post(
+                  `${process.env.GATSBY_API_URL}/forms/contact`,
+                  formData
+                );
+                console.log("RESPONSE", response.data);
+
+                if (response.data && response.data.message === "MESSAGE SENT") {
+                  setFormSuccess(true);
+                }
+              } catch (error) {
+                console.error(error.message);
+                setFormError(true);
+                setSubmitting(false);
+              }
             }}
           >
             {({ isSubmitting }) => {
-              return (
+              return !formSuccess ? (
                 <Form>
                   <div className="form-container">
                     <div style={{ marginBottom: 22 }}>
@@ -103,16 +123,20 @@ const ContactPage = ({ data: { site } }) => {
                       <div css={{ display: "flex", flexDirection: "row" }}>
                         <label htmlFor="email">Sujet </label>
                       </div>
-                      <Field type="text" placeholder="sujet" name="topic" />
+                      <Field
+                        type="text"
+                        placeholder="Demande, avis, question..."
+                        name="topic"
+                      />
                       <ErrorMessage
-                        name="email"
+                        name="topic"
                         render={(msg) => (
                           <div className="contact-error">{msg}</div>
                         )}
                       />
                       {/* MESSAGE  */}
                       <div css={{ display: "flex", flexDirection: "row" }}>
-                        <label htmlFor="message">
+                        <label htmlFor="Entrez votre corps de texte ici">
                           Tapez votre message ici :{" "}
                         </label>
                       </div>
@@ -147,43 +171,38 @@ const ContactPage = ({ data: { site } }) => {
                       Envoyer le message
                     </button>
                   </div>
+                  {formError && (
+                    <FormErrorMessage
+                      isVisible={true}
+                      message={`Une erreur est survenue, merci de réessayer
+                          ultérieurement ou de nous contacter si le problème
+                          persiste.`}
+                    />
+                  )}
                 </Form>
+              ) : (
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    height: "100%",
+                    justifyContent: "space-around",
+                    alignItems: "center",
+                  }}
+                >
+                  <span>Votre message a bien été envoyé !</span>
+                  <button
+                    className="button -secondary"
+                    onClick={() => {
+                      navigate("/");
+                    }}
+                  >
+                    Retourner à l'accueil
+                  </button>
+                </div>
               );
             }}
           </Formik>
-          {/* <form
-            className="form-container"
-            action="https://sendmail.w3layouts.com/SubmitContactForm"
-            method="post"
-          >
-            <div style={{ marginBottom: "22px" }}>
-              Une question, une suggestion ? Remplissez le formulaire
-              ci-dessous.
-            </div>
-            <div>
-              <label htmlFor="w3lName">Name</label>
-              <input type="text" name="w3lName" id="w3lName" />
-            </div>
-            <div>
-              <label htmlFor="w3lSender">Email</label>
-              <input type="email" name="w3lSender" id="w3lSender" />
-            </div>
-            <div>
-              <label htmlFor="w3lSubject">Subject</label>
-              <input type="text" name="w3lSubject" id="w3lSubject" />
-            </div>
-            <div>
-              <label htmlFor="w3lMessage">Message</label>
-              <textarea name="w3lMessage" id="w3lMessage"></textarea>
-            </div>
-            <div style={{ display: "flex", justifyContent: "flex-end" }}>
-              <input
-                type="submit"
-                className="button -primary"
-                style={{ marginRight: 0 }}
-              />
-            </div>
-          </form> */}
         </div>
       </div>
     </Layout>

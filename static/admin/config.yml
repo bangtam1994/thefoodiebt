@@ -48,23 +48,25 @@ collections:
     create: true
     fields:
       - { label: Template, name: template, widget: hidden, default: BlogPost }
-      - name: path
-        label: Path
-        widget: string
-        pattern: [/]
-        hint: "Path must start with /"
+      - {name: path,
+        label: Path,
+        widget: string,
+        pattern: [/],
+        hint: "Path must start with /"}
       - { name: date, label: Date, widget: datetime }
-      - { name: title, label: Title }
-      - label: Meta Description
-        name: metaDescription
-        widget: text
-        required: false
-      - label: Featured Image
-        name: thumbnail
-        widget: image
-        hint: "Image size 1280x800 works best :)"
-        required: false
+      - { name: title, label: Title , widget: string}
+      - { name: subtitle, label: Subtitle , widget: string}
+
+      - {label: Meta Description,
+        name: metaDescription,
+        widget: text,
+        required: false}
+      - {label: Featured Image,
+        name: thumbnail,
+        widget: image,
+        hint: "Image size 1280x800 works best :)",
+        required: false,
         media_library:
-          config:
-            multiple: false
+          {config:
+            multiple: false}}
       - { name: body, label: Body, widget: markdown }

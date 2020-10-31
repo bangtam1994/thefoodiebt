@@ -1,14 +1,15 @@
 import React from "react";
 import "./index.scss";
 import { mediaQueries } from "../../styles/breakpoints";
+import { Wrapper } from "./element";
 
 const Tags = ({ tagsList, handleOnClick, tagSelected }) => {
   const translateTags = (tag) => {
     if (tag === "streetfood") {
       return "Street Food";
     }
-    if (tag === "koreanfood") {
-      return "Coréen";
+    if (tag === "asian") {
+      return "ASIATIQUE";
     }
     if (tag === "pasta") {
       return "Pâtes";
@@ -16,17 +17,16 @@ const Tags = ({ tagsList, handleOnClick, tagSelected }) => {
     if (tag === "burger") {
       return "Burger";
     }
+    if (tag === "pastries") {
+      return "pâtisserie";
+    }
+    if (tag === "boba") {
+      return "boba";
+    }
   };
 
   return (
-    <div
-      className="list"
-      style={{
-        display: "flex",
-        justifyContent: "space-around",
-        width: "60%",
-      }}
-    >
+    <Wrapper>
       {tagsList.map((item: string, index: number) => {
         return (
           <div
@@ -45,7 +45,7 @@ const Tags = ({ tagsList, handleOnClick, tagSelected }) => {
           </div>
         );
       })}
-    </div>
+    </Wrapper>
   );
 };
 export default Tags;

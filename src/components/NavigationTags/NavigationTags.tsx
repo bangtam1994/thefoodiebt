@@ -1,5 +1,6 @@
 import { Link } from "gatsby";
 import React, { useState } from "react";
+import { NavigationWrapper } from "./element";
 
 import "./index.scss";
 import Tags from "./Tags";
@@ -12,13 +13,13 @@ interface Props {
 
 const NavigationTags = ({ handleOnClick, tagsList, tagSelected }) => {
   return (
-    <div className="navigation-tags-wrapper">
+    <NavigationWrapper>
       <Tags
         tagsList={tagsList}
         handleOnClick={handleOnClick}
         tagSelected={tagSelected}
       />
-    </div>
+    </NavigationWrapper>
   );
 };
 

@@ -6,6 +6,7 @@ import HeaderSmall from "./Header/HeaderSmall";
 import HeaderBig from "./Header/HeaderBig";
 import "../styles/global.scss";
 import "prismjs/themes/prism-okaidia.css";
+import FooterBig from "./Footer/FooterBig";
 
 interface Props {
   children?: any;
@@ -33,15 +34,7 @@ const Layout = ({ children, isLandingPage = false }) => {
         <HeaderSmall siteTitle={data.site.siteMetadata.title} />
       )}
       {children}
-      <footer className="site-footer">
-        <p>
-          &copy; {new Date().getFullYear()} The Foodie BT &bull; Crafted with{" "}
-          <span role="img" aria-label="love">
-            ❤️
-          </span>{" "}
-          by <a href="https://linkedin.com/in/bangtamnguyen">Bang-Tam NGUYEN</a>
-        </p>
-      </footer>
+      <FooterBig />
     </div>
   );
 };

@@ -7,14 +7,21 @@ import Linkedin from "../SocialNetworks/Linkedin";
 import ThemeChanger from "../themeChanger";
 
 import "./Header.css";
+import {
+  SmallHeaderContainer,
+  SmallHeaderSeparator,
+  SmallHeaderSocials,
+  SmallHeaderTitle,
+  SmallHeaderWrapper,
+} from "./element";
 
 interface Props {
   siteTitle: string;
 }
 const HeaderSmall = ({ siteTitle }: Props) => (
-  <div className="header-small-wrapper">
-    <div className="header-small-container">
-      <div className="flex1">
+  <SmallHeaderWrapper>
+    <SmallHeaderContainer>
+      <div style={{ display: "flex", flex: "1" }}>
         <i
           className="gg-menu"
           style={{ cursor: "pointer", justifyContent: "flex-start" }}
@@ -27,27 +34,28 @@ const HeaderSmall = ({ siteTitle }: Props) => (
           textDecoration: `none`,
         }}
       >
-        <div className="header-title-small">{siteTitle}</div>
+        <SmallHeaderTitle>{siteTitle}</SmallHeaderTitle>
       </Link>
       <div
-        className="flex1"
         style={{
+          display: "flex",
+          flex: 1,
           alignItems: "center",
           justifyContent: "flex-end",
         }}
       >
-        <div className="header-small-socials">
+        <SmallHeaderSocials>
           <span style={{ display: "flex", justifyContent: "space-between" }}>
             <Instagram />
             <Facebook />
             <Linkedin />
           </span>
-        </div>
+        </SmallHeaderSocials>
         <ThemeChanger />
       </div>
-    </div>
-    <div className="site-small-header-separator" />
-  </div>
+    </SmallHeaderContainer>
+    <SmallHeaderSeparator />
+  </SmallHeaderWrapper>
 );
 
 HeaderSmall.propTypes = {
