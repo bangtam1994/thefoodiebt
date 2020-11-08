@@ -5,6 +5,7 @@ import Navigation from "../navigation";
 import { HeaderSeparator, HeaderTitleWrapper, HeaderWrapper } from "./element";
 import ThemeChanger from "../themeChanger";
 import { useWindowSize } from "../../utils/MediaQueries";
+import ToggleMenu from "../ToggleMenu/ToggleMenu";
 interface Props {
   title: string;
 }
@@ -19,7 +20,7 @@ const HeaderBig = ({ title }: Props) => {
     >
       <HeaderWrapper>
         <HeaderTitleWrapper>
-          <i className="gg-menu" style={{ cursor: "pointer" }}></i>
+          <ToggleMenu />
           <Link to="/">{title}</Link>
         </HeaderTitleWrapper>
         {!isMobile && <Navigation />}

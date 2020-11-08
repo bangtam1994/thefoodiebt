@@ -16,7 +16,7 @@ export const HeaderTitleWrapper = styled.div({
   "&>a": {
     textDecoration: "none",
     transition: "color 0.5s ease-in-out",
-    marginLeft: 46,
+    marginLeft: 58,
     fontWeight: 500,
     fontFamily: "ChunkFive-Regular",
     fontSize: 76,

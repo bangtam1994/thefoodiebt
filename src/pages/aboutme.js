@@ -23,7 +23,7 @@ const AboutMe = ({ data: { site } }) => (
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        marginBottom: 300,
+        marginBottom: 100,
       }}
     >
       <div
@@ -43,11 +43,8 @@ const AboutMe = ({ data: { site } }) => (
       </div>
       <div
         style={{
-          position: "absolute",
           display: "flex",
           alignItems: "center",
-          bottom: -150,
-          left: "10%",
           width: "70%",
         }}
       >

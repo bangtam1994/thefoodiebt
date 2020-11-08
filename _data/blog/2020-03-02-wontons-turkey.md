@@ -1,10 +1,10 @@
 ---
 template: BlogPost
-path: /wonton_turkey
+path: /wontons_turkey
 date: 2020-10-01T06:15:50.738Z
 title: Les Wontons au mapo sauce !
 subtitle: Olala
-thumbnail: /assets/wontons_turkey.jpeg
+thumbnail: /assets/wontons_turkey.jpg
 metaDescription: wontons_turkey
 tags: ["asian"]
 ---

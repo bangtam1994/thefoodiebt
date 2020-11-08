@@ -14,6 +14,7 @@ import {
   SmallHeaderTitle,
   SmallHeaderWrapper,
 } from "./element";
+import ToggleMenu from "../ToggleMenu/ToggleMenu";
 
 interface Props {
   siteTitle: string;
@@ -22,10 +23,7 @@ const HeaderSmall = ({ siteTitle }: Props) => (
   <SmallHeaderWrapper>
     <SmallHeaderContainer>
       <div style={{ display: "flex", flex: "1" }}>
-        <i
-          className="gg-menu"
-          style={{ cursor: "pointer", justifyContent: "flex-start" }}
-        />
+        <ToggleMenu />
       </div>
 
       <Link

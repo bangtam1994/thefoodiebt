@@ -13,7 +13,7 @@ const FooterBig = () => {
         <span role="img" aria-label="love">
           ❤️
         </span>{" "}
-        by <a href="https://linkedin.com/in/bangtamnguyen">Bang-Tam NGUYEN</a>
+        by <Link to="/aboutme">Bang-Tam NGUYEN</Link>
       </p>
       <FooterNavigation>
         <Link to={"/contact"}>Contact</Link>{" "}
