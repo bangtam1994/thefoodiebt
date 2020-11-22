@@ -14,7 +14,8 @@ export const TitleWrapper = styled.div({
 
 export const Title = styled.h2({
   color: "#fff",
-  fontSize: 22,
+  fontSize: 24,
+  fontFamily: "Futura PT",
   "& > span": {
     backgroundColor: "#000000",
     fontWeight: "bold",
@@ -25,7 +26,9 @@ export const Title = styled.h2({
 
 export const Subtitle = styled.h3({
   color: "#000000",
-  fontSize: 15,
+  fontSize: 12,
+  fontWeight: "normal",
+  fontFamily: "Futura PT",
   margin: "0px 0px 5px 0px",
   "& > span": {
     backgroundColor: "#fff",

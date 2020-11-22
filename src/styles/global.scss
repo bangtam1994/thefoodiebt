@@ -1,15 +1,30 @@
 @font-face {
   font-family: "Futura PT";
-  src: url("https://db.onlinewebfonts.com/t/3c6b0199ae7b57966132e83c939d77e2.eot");
-  src: url("https://db.onlinewebfonts.com/t/3c6b0199ae7b57966132e83c939d77e2.eot?#iefix")
+  src: url("https://db.onlinewebfonts.com/t/bf059209ee8579497a5184db40bb5076.eot");
+  src: url("https://db.onlinewebfonts.com/t/bf059209ee8579497a5184db40bb5076.eot?#iefix")
       format("embedded-opentype"),
-    url("https://db.onlinewebfonts.com/t/3c6b0199ae7b57966132e83c939d77e2.woff2")
+    url("https://db.onlinewebfonts.com/t/bf059209ee8579497a5184db40bb5076.woff2")
       format("woff2"),
-    url("https://db.onlinewebfonts.com/t/3c6b0199ae7b57966132e83c939d77e2.woff")
+    url("https://db.onlinewebfonts.com/t/bf059209ee8579497a5184db40bb5076.woff")
       format("woff"),
-    url("https://db.onlinewebfonts.com/t/3c6b0199ae7b57966132e83c939d77e2.ttf")
+    url("https://db.onlinewebfonts.com/t/bf059209ee8579497a5184db40bb5076.ttf")
       format("truetype"),
-    url("https://db.onlinewebfonts.com/t/3c6b0199ae7b57966132e83c939d77e2.svg#Futura PT Medium")
+    url("https://db.onlinewebfonts.com/t/bf059209ee8579497a5184db40bb5076.svg#Futura PT Heavy")
+      format("svg");
+}
+
+@font-face {
+  font-family: "Futura PT Book";
+  src: url("https://db.onlinewebfonts.com/t/13a7a4a64f0a4b39a872e732c91d2375.eot");
+  src: url("https://db.onlinewebfonts.com/t/13a7a4a64f0a4b39a872e732c91d2375.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/13a7a4a64f0a4b39a872e732c91d2375.woff2")
+      format("woff2"),
+    url("https://db.onlinewebfonts.com/t/13a7a4a64f0a4b39a872e732c91d2375.woff")
+      format("woff"),
+    url("https://db.onlinewebfonts.com/t/13a7a4a64f0a4b39a872e732c91d2375.ttf")
+      format("truetype"),
+    url("https://db.onlinewebfonts.com/t/13a7a4a64f0a4b39a872e732c91d2375.svg#FuturaPT-Book")
       format("svg");
 }
 
@@ -60,7 +75,7 @@ body.dark {
   --card-shadow: #06060c;
   --btn-bg: var(--background);
   --btn-bdr: rgba(255, 145, 118, 0.9);
-  --btn-text-color: #868892;
+  --btn-text-color: var(--primary-color);
   --btn-hover-bg: var(--btn-bdr);
   --btn-hover-text-color: #00062b;
   --contact-bg: var(--card-shadow);
@@ -69,7 +84,7 @@ body.dark {
 }
 /* System Fonts as used by Medium and WordPress */
 body {
-  font-family: "Futura PT";
+  font-family: "Futura PT Book";
   background-color: var(--background);
   color: var(--text-color);
 }
@@ -80,9 +95,12 @@ a {
     text-decoration: underline;
   }
 }
+h1 {
+  font-family: "Futura PT";
+}
 .site-wrapper {
   padding: 32px;
-  max-width: 1140px;
+  max-width: 1280px;
   margin: 0 auto;
   img {
     max-width: 100%;

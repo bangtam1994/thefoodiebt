@@ -11,7 +11,7 @@ export const Menu = ({ isMenuOpen, setIsMenuOpen }: Props) => {
   return (
     <>
       <StyledMenu isMenuOpen={isMenuOpen}>
-        <Link to="/">
+        <Link to="/random_recipe">
           <span role="img" aria-label="price">
             🍳
           </span>

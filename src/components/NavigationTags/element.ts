@@ -7,10 +7,18 @@ export const Wrapper = styled.div({
   alignItems: "center",
   width: "85%",
   textTransform: "uppercase",
-  fontSize: 14,
+  fontSize: 13,
+  fontFamily: "Futura PT",
+  letterSpacing: "1.4px",
+  fontWeight: "bold",
   [mediaQueries.phoneOnly]: {
     fontSize: 12,
     flexWrap: "wrap",
+    margin: "10px 0px",
+    textAlign: "center",
+    "&>div": {
+      flexBasis: "25%",
+    },
   },
 });
 
