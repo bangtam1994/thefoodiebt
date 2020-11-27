@@ -25,21 +25,38 @@ const IndexPage = ({
     setTagSelected(copy);
   };
 
-  let Posts;
+  const PostsRender = React.useMemo(() => {
+    let postResult;
+    if (tagSelected.length === 0) {
+      postResult = edges
+        .filter((edge) => !!edge.node.frontmatter.date)
+        .map((edge) => <Card key={edge.node.id} post={edge.node} />);
+    } else {
+      postResult = edges
+        .filter((edge) => {
+          let tagsFromPost = edge.node.frontmatter.tags;
+          console.log(tagsFromPost);
 
-  if (tagSelected.length === 0) {
-    Posts = edges
-      .filter((edge) => !!edge.node.frontmatter.date)
-      .map((edge) => <Card key={edge.node.id} post={edge.node} />);
-  } else {
-    Posts = edges
-      .filter((edge) => {
-        let tagsFromPost = edge.node.frontmatter.tags;
-        return tagSelected.every((tag) => tagsFromPost.includes(tag));
-      })
-      .map((edge) => <Card key={edge.node.id} post={edge.node} />);
-  }
-  console.log(Posts);
+          return tagSelected.every((tag) => tagsFromPost.includes(tag));
+        })
+        .map((edge) => <Card key={edge.node.id} post={edge.node} />);
+    }
+
+    return postResult.length > 0 ? (
+      <div className="grids">{postResult}</div>
+    ) : (
+      <div
+        style={{
+          height: 300,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        Désolé, la recherche n'a donné aucun résultat !
+      </div>
+    );
+  }, [tagSelected, edges]);
 
   return (
     <Layout isLandingPage={true}>
@@ -54,20 +71,7 @@ const IndexPage = ({
         tagSelected={tagSelected}
       />
 
-      {Posts.length > 0 ? (
-        <div className="grids">{Posts}</div>
-      ) : (
-        <div
-          style={{
-            height: 300,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          Désolé, la recherche n'a donné aucun résultat !
-        </div>
-      )}
+      {PostsRender}
     </Layout>
   );
 };

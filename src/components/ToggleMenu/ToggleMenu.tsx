@@ -9,7 +9,6 @@ const ToggleMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const windowSize = useWindowSize();
   const isMobile = windowSize.width < 768;
-  console.log(isMenuOpen);
   return (
     <>
       {/* <IconWrapper
