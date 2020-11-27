@@ -1,12 +1,12 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import Card from "../components/Card/Card";
 import Loader from "../components/Loader/Loader";
 
 import Layout from "../components/layout";
 import Helmet from "react-helmet";
 import Button from "../components/Button/Button";
+import CardFull from "../components/CardFull/CardFull";
 
 const RandomRecipe = ({
   data: {
@@ -18,7 +18,7 @@ const RandomRecipe = ({
   const [isLoading, setIsLoading] = React.useState(false);
   const allPosts = edges
     .filter((edge) => !!edge.node.frontmatter.date)
-    .map((edge) => <Card key={edge.node.id} post={edge.node} />);
+    .map((edge) => <CardFull key={edge.node.id} post={edge.node} />);
   const randomize = () => {
     setResult(allPosts[Math.floor(Math.random() * allPosts.length)]);
     setIsLoading(false);
@@ -52,17 +52,18 @@ const RandomRecipe = ({
         >
           Qu'allez-vous tenter aujourd'hui ?
         </Button>
-      </div>
 
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          margin: "100px 0px",
-        }}
-      >
-        {isLoading ? <Loader /> : result}
+        <div
+          style={{
+            display: "flex",
+            textAlign: "center",
+            alignItems: "center",
+            justifyContent: "center",
+            margin: "70px 0px",
+          }}
+        >
+          {isLoading ? <Loader /> : result}
+        </div>
       </div>
     </Layout>
   );

@@ -7,8 +7,8 @@
   "dependencies": {
     "@emotion/core": "^10.1.1",
     "@emotion/styled": "^10.0.27",
-    "axios": "^0.21.0",
     "dotenv": "^8.2.0",
+    "emailjs-com": "^2.6.4",
     "formik": "^2.2.5",
     "gatsby": "^2.27.4",
     "gatsby-plugin-dark-mode": "^1.1.1",

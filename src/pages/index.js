@@ -29,13 +29,14 @@ const IndexPage = ({
     let postResult;
     if (tagSelected.length === 0) {
       postResult = edges
-        .filter((edge) => !!edge.node.frontmatter.date)
+        .filter((edge) => {
+          return !!edge.node.frontmatter.date;
+        })
         .map((edge) => <Card key={edge.node.id} post={edge.node} />);
     } else {
       postResult = edges
         .filter((edge) => {
           let tagsFromPost = edge.node.frontmatter.tags;
-          console.log(tagsFromPost);
 
           return tagSelected.every((tag) => tagsFromPost.includes(tag));
         })

@@ -82,18 +82,18 @@ export const StyledBurger = styled.button`
     position: relative;
     transform-origin: 1px;
 
-    :first-child {
+    :first-of-type {
       transform: ${({ isMenuOpen }: BurgerProps) =>
         isMenuOpen ? "rotate(45deg)" : "rotate(0)"};
     }
 
-    :nth-child(2) {
+    :nth-of-type(2) {
       opacity: ${({ isMenuOpen }: BurgerProps) => (isMenuOpen ? "0" : "1")};
       transform: ${({ isMenuOpen }) =>
         isMenuOpen ? "translateX(20px)" : "translateX(0)"};
     }
 
-    :nth-child(3) {
+    :nth-of-type(3) {
       transform: ${({ isMenuOpen }: BurgerProps) =>
         isMenuOpen ? "rotate(-45deg)" : "rotate(0)"};
     }

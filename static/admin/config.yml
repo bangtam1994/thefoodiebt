@@ -56,9 +56,10 @@ collections:
           pattern: [/, "english"],
           hint: "Path must start with /",
         }
-      - { name: date, label: Date, widget: datetime }
+      - { name: date, label: Date, widget: datetime, date-format: "DD-MM-YYYY" }
       - { name: title, label: Title, widget: string }
       - { name: subtitle, label: Subtitle, widget: string }
+      - { name: tags, label: tags, widget: list }
 
       - {
           label: Meta Description,

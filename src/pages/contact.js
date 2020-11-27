@@ -5,7 +5,7 @@ import Layout from "../components/layout";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import FormErrorMessage from "../components/Form/FormErrorMessage";
 import * as Yup from "yup";
-import axios from "axios";
+import emailjs from "emailjs-com";
 
 // Yup validation
 const ValidationSchema = Yup.object().shape({
@@ -30,7 +30,7 @@ const ContactPage = ({ data: { site } }) => {
     topic: "",
     message: "",
   };
-  console.log(formError);
+
   return (
     <Layout>
       <Helmet>
@@ -62,23 +62,29 @@ const ContactPage = ({ data: { site } }) => {
               setFormError(false);
 
               const formData = {
-                name: values.name,
+                from_name: values.name,
                 topic: values.topic,
-                email: values.email,
+                from_email: values.email,
                 message: values.message,
               };
 
               console.log(formData);
+              const service_id = "default_service";
+              const template_id = "template_tq6ax6t";
+              const user_id = process.env.GATSBY_EMAILJS_USERID;
+              console.log("USERID", user_id);
               try {
-                const response = await axios.post(
-                  `${process.env.GATSBY_API_URL}/forms/contact`,
-                  formData
+                emailjs.send(service_id, template_id, formData, user_id).then(
+                  (response) => {
+                    console.log("SUCCESS!", response.status, response.text);
+                    setFormSuccess(true);
+                  },
+                  (err) => {
+                    setFormError(true);
+                    console.log("FAILED...", err);
+                    setSubmitting(false);
+                  }
                 );
-                console.log("RESPONSE", response.data);
-
-                if (response.data && response.data.message === "MESSAGE SENT") {
-                  setFormSuccess(true);
-                }
               } catch (error) {
                 console.error(error.message);
                 setFormError(true);
@@ -94,12 +100,17 @@ const ContactPage = ({ data: { site } }) => {
                       Une question, un message ? Veuillez remplir ce formulaire
                       ci-dessous.
                     </div>
-                    <div>
+                    <div style={{ fontSize: 16, fontFamily: "Futura PT" }}>
                       {/* NAME */}
                       <div css={{ display: "flex", flexDirection: "row" }}>
                         <label htmlFor="name">Nom </label>
                       </div>
-                      <Field type="text" placeholder="Nom" name="name" />
+                      <Field
+                        type="text"
+                        placeholder="Nom"
+                        name="name"
+                        style={{ color: "black" }}
+                      />
                       <ErrorMessage
                         name="name"
                         render={(msg) => (
@@ -111,7 +122,12 @@ const ContactPage = ({ data: { site } }) => {
                       <div css={{ display: "flex", flexDirection: "row" }}>
                         <label htmlFor="email">Email </label>
                       </div>
-                      <Field type="email" placeholder="Email" name="email" />
+                      <Field
+                        type="email"
+                        placeholder="Email"
+                        name="email"
+                        style={{ color: "black" }}
+                      />
                       <ErrorMessage
                         name="email"
                         render={(msg) => (
@@ -127,6 +143,7 @@ const ContactPage = ({ data: { site } }) => {
                         type="text"
                         placeholder="Demande, avis, question..."
                         name="topic"
+                        style={{ color: "black" }}
                       />
                       <ErrorMessage
                         name="topic"
@@ -145,6 +162,7 @@ const ContactPage = ({ data: { site } }) => {
                         placeholder="message"
                         name="message"
                         as="textarea"
+                        style={{ color: "black" }}
                       />
                       <ErrorMessage
                         name="message"
@@ -175,7 +193,7 @@ const ContactPage = ({ data: { site } }) => {
                     <FormErrorMessage
                       isVisible={true}
                       message={`Une erreur est survenue, merci de réessayer
-                          ultérieurement ou de nous contacter si le problème
+                          ultérieurement ou de me contacter via un autre réseau si le problème
                           persiste.`}
                     />
                   )}
